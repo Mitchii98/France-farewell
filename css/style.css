@@ -1,0 +1,2415 @@
+/* =========================================================
+   FRANCE FAREWELL WEBSITE
+   MAIN STYLESHEET
+   ---------------------------------------------------------
+   Organized version of the original CSS
+   Layout and design preserved
+========================================================= */
+
+
+/* =========================================================
+   01. GENERAL DESIGN / RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #fff8fb;
+    color: #684b5a;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   02. HERO SECTION
+========================================================= */
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(
+        135deg,
+        #ffe4ef,
+        #fff5f8,
+        #f5e6ff
+    );
+}
+
+
+/* =========================================================
+   03. HERO ANIMATIONS
+========================================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Floating hearts */
+
+.hero::before,
+.hero::after {
+    position: absolute;
+    font-size: 25px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.hero::before {
+    content: "♡";
+    left: 12%;
+    bottom: -30px;
+    animation: floatingHeart 6s infinite ease-in;
+}
+
+.hero::after {
+    content: "♡";
+    right: 15%;
+    bottom: -30px;
+    animation: floatingHeart 8s infinite ease-in 2s;
+}
+
+@keyframes floatingHeart {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.5;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform:
+            translateY(-90vh)
+            rotate(25deg);
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   04. HERO PHOTO - SCRAPBOOK POLAROID
+========================================================= */
+
+.hero-photo {
+    position: relative;
+
+    width: 230px;
+    padding: 10px 10px 38px;
+
+    margin: 25px 0 15px;
+
+    background: white;
+
+    box-shadow:
+        0 8px 25px #dba9bd40;
+
+    transform: rotate(-3deg);
+
+    transition: transform 0.4s ease;
+
+    z-index: 2;
+}
+
+
+/* Scrapbook tape */
+
+.hero-photo::before {
+    content: "";
+
+    position: absolute;
+
+    width: 75px;
+    height: 22px;
+
+    top: -10px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+    background: #f8d9e5;
+
+    opacity: 0.9;
+
+    z-index: 5;
+}
+
+.hero-photo:hover {
+    transform:
+        rotate(0deg)
+        scale(1.05);
+}
+
+.hero-photo img {
+    width: 100%;
+    height: 260px;
+
+    object-fit: contain;
+
+    display: block;
+
+    background: #fff8fb;
+}
+
+
+/* Little caption underneath */
+
+.hero-photo::after {
+    content: "A special person in this chapter ♡";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 10px;
+
+    text-align: center;
+
+    font-family: "Segoe UI", sans-serif;
+
+    font-size: 12px;
+
+    color: #765567;
+}
+
+
+/* =========================================================
+   05. HERO TEXT / BUTTONS / GENERAL SECTIONS
+========================================================= */
+
+.tag {
+    background: white;
+    color: #c36e94;
+    border-radius: 30px;
+    padding: 7px 18px;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: clamp(48px, 10vw, 85px);
+    color: #c36e94;
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.hero p {
+    max-width: 550px;
+    margin-bottom: 25px;
+}
+
+.button {
+    display: inline-block;
+    border: none;
+    border-radius: 30px;
+    background: #d783a5;
+    color: white;
+    padding: 13px 25px;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #b85f86;
+    transform: translateY(-3px);
+}
+
+section {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.section-title {
+    color: #bd7191;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+    color: #927987;
+}
+
+
+/* =========================================================
+   06. ENVELOPE SECTION
+========================================================= */
+
+#envelope-section {
+    background: #fff8fb;
+    overflow: hidden;
+}
+
+.envelope-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.envelope {
+    position: relative;
+    width: 320px;
+    height: 210px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    animation: envelopeFloat 3s ease-in-out infinite;
+}
+
+.envelope:hover {
+    animation-play-state: paused;
+    transform: translateY(-8px) scale(1.03);
+}
+
+@keyframes envelopeFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+}
+
+
+/* Envelope body */
+
+.envelope-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f4b6cc;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px #dba9bd40;
+    z-index: 1;
+}
+
+
+/* Envelope letter */
+
+.envelope-letter {
+    position: absolute;
+
+    width: 270px;
+    height: 175px;
+
+    left: 25px;
+    top: 20px;
+
+    background: #fffdfd;
+
+    padding: 20px;
+
+    border-radius: 5px;
+
+    text-align: left;
+
+    font-size: 12px;
+    line-height: 1.4;
+
+    transform: translateY(0);
+    opacity: 0;
+
+    transition:
+        transform 0.8s ease,
+        opacity 0.5s ease;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+.envelope-letter p {
+    margin-bottom: 7px;
+}
+
+
+/* Envelope flap */
+
+.envelope-flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 115px solid #e89ab7;
+
+    transform-origin: top;
+
+    transition: transform 0.8s ease;
+
+    z-index: 4;
+}
+
+
+/* Heart seal */
+
+.envelope-heart {
+    position: absolute;
+
+    top: 85px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 45px;
+    height: 45px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+
+    z-index: 5;
+
+    box-shadow: 0 3px 10px #dba9bd40;
+
+    transition: opacity 0.4s ease;
+}
+
+
+/* Open envelope */
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .envelope-letter {
+    transform: translateY(-145px);
+    opacity: 1;
+    z-index: 6;
+}
+
+.envelope.open .envelope-heart {
+    opacity: 0;
+}
+
+
+/* Envelope hint */
+
+#envelope-hint {
+    margin-top: 25px;
+    color: #bd7191;
+    font-size: 14px;
+    animation: envelopeHint 1.5s infinite;
+}
+
+@keyframes envelopeHint {
+
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+}
+
+
+/* =========================================================
+   07. HERO CONTENT ENTRANCE ANIMATIONS
+========================================================= */
+
+.hero .tag {
+    animation: fadeDown 0.8s ease both;
+}
+
+.hero .hero-photo {
+    animation: photoDrop 1s ease 0.2s both;
+}
+
+.hero h1 {
+    animation: fadeUp 0.8s ease 0.4s both;
+}
+
+.hero p {
+    animation: fadeUp 0.8s ease 0.6s both;
+}
+
+.hero .button {
+    animation: fadeUp 0.8s ease 0.8s both;
+}
+
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes photoDrop {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(-30px)
+            rotate(-10deg);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+}
+
+
+/* =========================================================
+   08. FAREWELL LETTER
+========================================================= */
+
+.letter {
+    max-width: 720px;
+    margin: 30px auto 0;
+    padding: 35px;
+    background: white;
+    border: 1px solid #f5dce7;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px #dba9bd20;
+    text-align: left;
+}
+
+.letter p {
+    margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   09. PHOTO GALLERY
+========================================================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 950px;
+    margin: 30px auto 0;
+}
+
+
+/* =========================================================
+   10. PHOTO CARDS
+========================================================= */
+
+.photo-card {
+    position: relative;
+    background: #fff;
+    padding: 12px 12px 18px;
+    border-radius: 5px;
+
+    box-shadow:
+        0 5px 20px #dba9bd30;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+
+    overflow: visible;
+
+    animation: photoAppear 0.7s ease both;
+}
+
+
+/* Random scrapbook rotation */
+
+.photo-card:nth-child(4n+1) {
+    transform: rotate(-2deg);
+}
+
+.photo-card:nth-child(4n+2) {
+    transform: rotate(2deg);
+}
+
+.photo-card:nth-child(4n+3) {
+    transform: rotate(-1deg);
+}
+
+.photo-card:nth-child(4n+4) {
+    transform: rotate(1.5deg);
+}
+
+
+/* Hover effect */
+
+.photo-card:hover {
+    transform:
+        translateY(-10px)
+        rotate(0deg)
+        scale(1.03);
+
+    box-shadow:
+        0 15px 30px #dba9bd45;
+
+    z-index: 10;
+}
+
+
+/* Photo frame */
+
+.photo-frame {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+
+/* Actual photo */
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover .photo-frame img {
+    transform: scale(1.06);
+}
+
+
+/* Scrapbook tape */
+
+.photo-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+    height: 20px;
+
+    top: -9px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+    background: #f8d9e5;
+
+    opacity: 0.85;
+
+    z-index: 11;
+}
+
+.photo-card:nth-child(even)::before {
+    transform:
+        translateX(-50%)
+        rotate(3deg);
+
+    background: #eadcf3;
+}
+
+
+/* Photo caption */
+
+.photo-caption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding-top: 12px;
+}
+
+.photo-caption span {
+    color: #d783a5;
+    font-size: 15px;
+}
+
+.photo-caption p {
+    padding: 0;
+    margin: 0;
+
+    color: #765567;
+    font-size: 14px;
+    font-family: "Segoe UI", sans-serif;
+}
+
+
+/* Photo entrance animation */
+
+@keyframes photoAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(30px)
+            scale(0.95)
+            rotate(0deg);
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   11. LOAD MORE PHOTOS
+========================================================= */
+
+.load-more-button {
+    margin-top: 35px;
+}
+
+.load-more-button:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+
+/* =========================================================
+   12. FULL SCREEN PHOTO VIEWER
+========================================================= */
+
+.photo-viewer {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(70, 45, 60, 0.92);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+
+    padding: 30px;
+}
+
+.photo-viewer.show {
+    display: flex;
+
+    animation: viewerAppear 0.3s ease;
+}
+
+
+/* Viewer photo area */
+
+.viewer-content {
+    max-width: 85%;
+    max-height: 90%;
+
+    text-align: center;
+}
+
+#viewerImage {
+    max-width: 100%;
+    max-height: 75vh;
+
+    object-fit: contain;
+
+    background: white;
+
+    padding: 10px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+#viewerCaption {
+    margin-top: 15px;
+
+    color: white;
+
+    font-size: 16px;
+}
+
+
+/* Close button */
+
+.viewer-close {
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #bd7191;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition: 0.3s;
+}
+
+.viewer-close:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+
+/* Previous / Next */
+
+.viewer-prev,
+.viewer-next {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #bd7191;
+
+    font-size: 40px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.viewer-prev {
+    left: 25px;
+}
+
+.viewer-next {
+    right: 25px;
+}
+
+.viewer-prev:hover,
+.viewer-next:hover {
+    transform:
+        translateY(-50%)
+        scale(1.1);
+}
+
+
+/* Viewer animation */
+
+@keyframes viewerAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   13. COWORKER MESSAGE SECTION
+========================================================= */
+
+#messages {
+    background: #fff0f5;
+}
+
+
+/* Message grid */
+
+.message-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 900px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+
+/* Message card */
+
+.message-card {
+    position: relative;
+    width: 100%;
+    height: 240px;
+
+    background: transparent;
+
+    border: none;
+    padding: 0;
+
+    cursor: pointer;
+
+    perspective: 1200px;
+
+    text-align: center;
+
+    color: inherit;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Card inner */
+
+.message-card-inner {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.8s cubic-bezier(
+            0.2,
+            0.7,
+            0.2,
+            1
+        );
+}
+
+
+/* Flip */
+
+.message-card.revealed .message-card-inner {
+    transform: rotateY(180deg);
+}
+
+
+/* Front + Back */
+
+.message-front,
+.message-back {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px #dba9bd30;
+
+    overflow: hidden;
+}
+
+
+/* Hidden front */
+
+.message-front {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdfd,
+            #ffeaf2
+        );
+
+    border: 1px solid #f5dce7;
+}
+
+
+/* Front scrapbook tape */
+
+.message-front::before {
+    content: "";
+
+    position: absolute;
+
+    width: 75px;
+    height: 22px;
+
+    top: -9px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-3deg);
+
+    background: #f8d9e5;
+
+    opacity: 0.9;
+}
+
+
+/* Front icon */
+
+.message-secret-icon {
+    font-size: 48px;
+
+    margin-bottom: 12px;
+
+    transition:
+        transform 0.3s ease;
+}
+
+.message-card:hover
+.message-secret-icon {
+    transform:
+        scale(1.15)
+        rotate(-5deg);
+}
+
+
+/* Front title */
+
+.message-front h3 {
+    color: #bd7191;
+
+    font-size: 22px;
+
+    margin-bottom: 8px;
+}
+
+
+/* Front text */
+
+.message-front p {
+    color: #927987;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+}
+
+
+/* Click hint */
+
+.message-front span:last-child {
+    color: #d783a5;
+
+    font-size: 13px;
+
+    animation:
+        messageHint 1.8s infinite;
+}
+
+
+/* Revealed back */
+
+.message-back {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 25px;
+
+    padding: 25px 30px;
+
+    background: white;
+
+    border-left:
+        5px solid #e8a5c0;
+
+    text-align: left;
+
+    transform: rotateY(180deg);
+
+    overflow-y: auto;
+}
+
+
+/* Coworker photo */
+
+.message-back .coworker-photo {
+    width: 100px;
+    height: 100px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border:
+        5px solid #f8d9e5;
+
+    box-shadow:
+        0 5px 15px #dba9bd30;
+}
+
+
+/* Message content */
+
+.message-back .message-content {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.message-back .message-content p {
+    margin-bottom: 12px;
+
+    color: #684b5a;
+
+    white-space: pre-line;
+}
+
+.message-back .message-content strong {
+    color: #bd7191;
+}
+
+
+/* Hover */
+
+.message-card:hover .message-front {
+    box-shadow:
+        0 12px 30px #dba9bd45;
+}
+
+
+/* Front/back decoration */
+
+.message-front::after {
+    content: "♡";
+
+    position: absolute;
+
+    right: 20px;
+    bottom: 12px;
+
+    color: #e8a5c0;
+
+    font-size: 20px;
+}
+
+
+/* Hint animation */
+
+@keyframes messageHint {
+
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.45;
+    }
+
+}
+
+
+/* =========================================================
+   14. SURPRISE SECTION
+========================================================= */
+
+.surprise-box {
+    max-width: 650px;
+    margin: 25px auto;
+}
+
+#surpriseMessage {
+    display: none;
+    margin-top: 25px;
+    padding: 30px;
+    border-radius: 20px;
+    background: white;
+    border: 1px dashed #d783a5;
+    animation: appear 0.7s ease;
+}
+
+#surpriseMessage.show {
+    display: block;
+
+    animation:
+        surpriseAppear 0.8s ease both,
+        surpriseGlow 2s ease-in-out 0.8s infinite alternate;
+}
+
+
+@keyframes surpriseAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(30px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes surpriseGlow {
+
+    from {
+        box-shadow: 0 0 0 rgba(215, 131, 165, 0);
+    }
+
+    to {
+        box-shadow:
+            0 0 25px rgba(215, 131, 165, 0.25);
+    }
+
+}
+
+
+/* =========================================================
+   15. FOOTER
+========================================================= */
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #f8e4ed;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   16. SURPRISE HEART CELEBRATION
+========================================================= */
+
+.heart-particle {
+    position: fixed;
+
+    pointer-events: none;
+
+    font-size: 22px;
+
+    z-index: 10000;
+
+    animation: heartBurst 1.8s ease-out forwards;
+}
+
+@keyframes heartBurst {
+
+    0% {
+        opacity: 1;
+        transform:
+            translate(0, 0)
+            scale(0.5)
+            rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(1.3)
+            rotate(var(--rotate));
+    }
+}
+
+
+/* =========================================================
+   17. HIDDEN EASTER EGGS
+========================================================= */
+
+.easter-egg {
+    position: fixed;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 9998;
+    opacity: 0.45;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    user-select: none;
+}
+
+.easter-egg:hover {
+    opacity: 1;
+    transform: scale(1.3) rotate(10deg);
+}
+
+.egg-flower {
+    left: 18px;
+    top: 35%;
+}
+
+.egg-heart {
+    right: 20px;
+    top: 55%;
+}
+
+.egg-star {
+    left: 30px;
+    bottom: 80px;
+}
+
+
+/* =========================================================
+   18. EASTER EGG POPUP
+========================================================= */
+
+.egg-message {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(70, 45, 60, 0.75);
+    z-index: 10000;
+    padding: 20px;
+}
+
+.egg-message.show {
+    display: flex;
+    animation: eggFadeIn 0.3s ease;
+}
+
+.egg-content {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    max-height: 85vh;
+    overflow-y: auto;
+    margin: auto;
+    padding: 45px 30px;
+    text-align: center;
+    background: #fff8fb;
+    border: 3px solid #f4c4d7;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(100, 60, 80, 0.3);
+    animation: eggPop 0.4s ease;
+}
+
+#eggIcon {
+    font-size: 55px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.egg-content h2 {
+    color: #bd7191;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.egg-content p {
+    color: #765567;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.egg-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    background: #fbe5ee;
+    color: #bd7191;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.egg-close:hover {
+    transform: rotate(90deg);
+}
+
+
+@keyframes eggFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes eggPop {
+
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   19. OPEN WHEN LETTERS
+========================================================= */
+
+#open-when {
+    background: linear-gradient(
+        180deg,
+        #fff8fb,
+        #fff0f6
+    );
+}
+
+.open-when-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    max-width: 900px;
+    margin: 35px auto;
+    text-align: left;
+}
+
+.open-when-card {
+    position: relative;
+    align-self: start;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 7px 20px #dba9bd30;
+    transition: box-shadow 0.3s ease;
+}
+
+
+/* Different pastel paper colors */
+
+.pink-card {
+    background: #fce3ed;
+    border: 1px solid #f3c5d7;
+}
+
+.purple-card {
+    background: #eee4fa;
+    border: 1px solid #dac8ef;
+}
+
+.yellow-card {
+    background: #fff1cf;
+    border: 1px solid #f0dca5;
+}
+
+.green-card {
+    background: #e3f3e7;
+    border: 1px solid #c5e4cd;
+}
+
+
+/* Scrapbook tape */
+
+.open-when-card::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 70px;
+    height: 20px;
+    transform: translateX(-50%) rotate(-3deg);
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.open-when-card:nth-child(even)::before {
+    transform: translateX(-50%) rotate(3deg);
+}
+
+
+/* Clickable card heading */
+
+.open-when-trigger {
+    width: 100%;
+    min-height: 180px;
+    padding: 25px 15px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.55);
+    color: #684b5a;
+    font-family: inherit;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.open-when-trigger:hover {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.open-when-trigger:focus-visible {
+    outline: 3px solid #bd7191;
+    outline-offset: 3px;
+}
+
+
+/* Letter elements */
+
+.letter-icon {
+    font-size: 36px;
+}
+
+.letter-title {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.letter-hint {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.letter-arrow {
+    font-size: 22px;
+    color: #bd7191;
+    font-weight: bold;
+}
+
+
+/* Revealed letter */
+
+.open-when-letter {
+    margin-top: 10px;
+    padding: 22px 18px;
+    border-radius: 8px;
+    background: #fffdfd;
+    color: #684b5a;
+    text-align: left;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+    animation: letterReveal 0.4s ease;
+}
+
+.open-when-letter[hidden] {
+    display: none;
+}
+
+.open-when-letter p {
+    margin-bottom: 14px;
+}
+
+.open-when-letter p:last-child {
+    margin-bottom: 0;
+}
+
+.open-when-letter strong {
+    color: #bd7191;
+}
+
+.open-when-card.open {
+    box-shadow: 0 12px 28px #dba9bd45;
+}
+
+.open-when-footer {
+    max-width: 600px;
+    margin: 25px auto 0;
+    color: #927987;
+    font-style: italic;
+}
+
+
+@keyframes letterReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   20. MYSTERY MEMORY CARDS
+========================================================= */
+
+#mystery-memories {
+    background: linear-gradient(
+        135deg,
+        #fff0f5,
+        #fff8fb,
+        #f5eaff
+    );
+    overflow: hidden;
+}
+
+.mystery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 950px;
+    margin: 40px auto 0;
+}
+
+.memory-card {
+    width: 100%;
+    height: 360px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    perspective: 1000px;
+    text-align: center;
+    color: inherit;
+    font: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.memory-card-inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(
+        0.2,
+        0.7,
+        0.2,
+        1
+    );
+}
+
+
+/* Flip */
+
+.memory-card.flipped .memory-card-inner {
+    transform: rotateY(180deg);
+}
+
+
+/* Front + back */
+
+.memory-card-front,
+.memory-card-back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: white;
+    border: 1px solid #f5dce7;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px #dba9bd30;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+}
+
+
+/* Front of card */
+
+.memory-card-front {
+    background: linear-gradient(
+        145deg,
+        #fffdfd,
+        #ffeaf2
+    );
+}
+
+.memory-card-front::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    width: 75px;
+    height: 20px;
+    background: #f8d9e5;
+    opacity: 0.85;
+    transform: translateX(-50%) rotate(-3deg);
+}
+
+.mystery-icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.memory-card:hover .mystery-icon {
+    transform: scale(1.15) rotate(-8deg);
+}
+
+.mystery-title {
+    display: block;
+    color: #bd7191;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.mystery-hint {
+    display: block;
+    margin-top: 18px;
+    color: #927987;
+    font-size: 13px;
+}
+
+
+/* Back of card */
+
+.memory-card-back {
+    transform: rotateY(180deg);
+    padding: 12px 12px 16px;
+    justify-content: flex-start;
+    gap: 10px;
+    background: #fffdfd;
+}
+
+.memory-card-back img {
+    display: block;
+    width: 100%;
+    height: 225px;
+    object-fit: contain;
+    background: #fff8fb;
+    border-radius: 5px;
+}
+
+.memory-message {
+    display: block;
+    width: 100%;
+    color: #765567;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.mystery-footer {
+    margin-top: 30px;
+    color: #bd7191;
+    font-size: 14px;
+}
+
+
+/* Keyboard accessibility */
+
+.memory-card:focus-visible {
+    outline: 3px solid #d783a5;
+    outline-offset: 5px;
+    border-radius: 12px;
+}
+
+
+
+/* =========================================================
+   22. MOBILE - PHOTO VIEWER
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .photo-viewer {
+        padding: 15px;
+    }
+
+    .viewer-content {
+        max-width: 90%;
+    }
+
+    #viewerImage {
+        max-height: 70vh;
+    }
+
+    .viewer-prev,
+    .viewer-next {
+        width: 45px;
+        height: 45px;
+
+        font-size: 32px;
+    }
+
+    .viewer-prev {
+        left: 8px;
+    }
+
+    .viewer-next {
+        right: 8px;
+    }
+
+    .viewer-close {
+        top: 15px;
+        right: 15px;
+    }
+
+    .message-card {
+        padding: 22px;
+        gap: 15px;
+    }
+
+    .coworker-photo {
+        width: 70px;
+        height: 70px;
+    }
+
+}
+
+
+/* =========================================================
+   23. MOBILE - COWORKER MESSAGE CARDS
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .message-card {
+        height: 300px;
+    }
+
+    .message-back {
+        padding: 22px;
+        gap: 15px;
+    }
+
+    .message-back .coworker-photo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .message-front h3 {
+        font-size: 20px;
+    }
+
+    .message-back .message-content p {
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================================================
+   24. MOBILE - MAIN LAYOUT
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .gallery {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+    }
+
+    .photo-card img {
+        height: 250px;
+    }
+
+    .photo-frame {
+        height: 250px;
+    }
+
+    .message-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .letter {
+        padding: 25px;
+    }
+
+    section {
+        padding: 50px 18px;
+    }
+
+    .hero-photo {
+        width: 200px;
+    }
+
+    .hero-photo img {
+        height: 230px;
+    }
+
+}
+
+
+/* =========================================================
+   25. MOBILE - EASTER EGG POPUP
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .egg-content {
+        padding: 40px 22px;
+    }
+
+    .egg-content h2 {
+        font-size: 22px;
+    }
+
+    .egg-content p {
+        font-size: 14px;
+    }
+
+    .egg-flower {
+        left: 8px;
+    }
+
+    .egg-heart {
+        right: 8px;
+    }
+
+    .egg-star {
+        left: 12px;
+        bottom: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   26. MOBILE - OPEN WHEN LETTERS
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .open-when-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        gap: 25px;
+    }
+
+    .open-when-trigger {
+        min-height: 155px;
+    }
+
+    .open-when-letter {
+        padding: 20px 15px;
+    }
+
+}
+
+
+/* =========================================================
+   27. MOBILE - MYSTERY MEMORY CARDS
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .mystery-grid {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        gap: 25px;
+    }
+
+    .memory-card {
+        height: 340px;
+    }
+
+    .memory-card-back img {
+        height: 205px;
+    }
+
+}
+
+
+/* ========================================
+   ⭐ JAR OF WISHES
+======================================== */
+
+#wishes-jar {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(
+        180deg,
+        #fff8fb,
+        #fff0f6,
+        #fff9fc
+    );
+    overflow: hidden;
+}
+
+.wish-jar-container {
+    max-width: 520px;
+    margin: 35px auto 0;
+    padding: 30px 22px;
+    background: #ffffff;
+    border: 2px dashed #f1c6d8;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px #dba9bd25;
+    position: relative;
+}
+
+.wish-intro {
+    color: #927987;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.wish-jar-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 25px 15px;
+    border: 1px solid #f5dce7;
+    border-radius: 22px;
+    background: linear-gradient(
+        145deg,
+        #fffafd,
+        #ffeaf2
+    );
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.wish-jar-button:hover {
+    transform: translateY(-5px) rotate(-1deg);
+    box-shadow: 0 12px 25px #dba9bd30;
+}
+
+.wish-jar-button:focus-visible,
+.wish-again-button:focus-visible {
+    outline: 3px solid #bd7191;
+    outline-offset: 4px;
+}
+
+.wish-jar {
+    font-size: 85px;
+    line-height: 1.2;
+    transition: transform 0.4s ease;
+}
+
+.wish-jar-button:hover .wish-jar {
+    transform: rotate(8deg) scale(1.08);
+}
+
+.wish-sparkle {
+    position: absolute;
+    top: 15px;
+    right: 22px;
+    font-size: 24px;
+}
+
+.wish-stars {
+    font-size: 20px;
+    letter-spacing: 5px;
+}
+
+.wish-jar-label {
+    color: #bd7191;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.wish-click {
+    color: #a58b98;
+    font-size: 13px;
+}
+
+.wish-message {
+    display: none;
+    margin-top: 25px;
+    padding: 25px 20px;
+    background: #fff4f8;
+    border: 1px solid #f4cddd;
+    border-radius: 18px;
+    animation: wishAppear 0.5s ease both;
+}
+
+.wish-message.show {
+    display: block;
+}
+
+.wish-note-icon {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+#wishText {
+    color: #80596d;
+    font-size: 16px;
+    line-height: 1.9;
+    margin: 0;
+}
+
+.wish-heart {
+    display: block;
+    margin-top: 12px;
+    color: #d783a5;
+    font-size: 24px;
+}
+
+.wish-again-button {
+    margin-top: 20px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 25px;
+    background: #e8a5c0;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.wish-again-button:hover {
+    background: #d783a5;
+    transform: translateY(-2px);
+}
+
+@keyframes wishAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 650px) {
+    #wishes-jar {
+        padding: 55px 16px;
+    }
+
+    .wish-jar-container {
+        padding: 22px 15px;
+    }
+
+    .wish-jar {
+        font-size: 72px;
+    }
+
+    #wishText {
+        font-size: 15px;
+    }
+}
+
+
+
+/* =========================================
+   💗 FRANCE PHOTO CAROUSEL
+========================================= */
+
+.france-carousel-section {
+    padding: 65px 20px;
+    text-align: center;
+    background: linear-gradient(
+        180deg,
+        #fff0f5,
+        #ffe1eb,
+        #fff5f8
+    );
+    overflow: hidden;
+}
+
+.france-carousel-section h2 {
+    color: #d65a87;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.carousel-subtitle {
+    color: #a85c7c;
+    margin-bottom: 35px;
+}
+
+.france-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.france-carousel-window {
+    width: 100%;
+    max-width: 350px;
+    overflow: hidden;
+    padding: 12px;
+}
+
+.france-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.france-photo {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    background: #fffdfd;
+    border: 2px solid #f7bfd2;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(190, 90, 130, 0.15);
+    transform: rotate(-1deg);
+}
+
+.france-photo img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.france-photo p {
+    color: #bc6085;
+    font-family: cursive;
+    font-size: 15px;
+    margin: 14px 0 5px;
+}
+
+.carousel-btn {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: #f4a8c4;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.carousel-btn:hover {
+    background: #d85d91;
+    transform: scale(1.12);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.carousel-dot {
+    width: 9px;
+    height: 9px;
+    border: none;
+    border-radius: 50%;
+    background: #edb5ca;
+    cursor: pointer;
+    padding: 0;
+}
+
+.carousel-dot.active {
+    background: #d85d91;
+    transform: scale(1.3);
+}
+
+.carousel-footer {
+    margin-top: 25px;
+    color: #c46b8c;
+    font-family: cursive;
+}
+
+@media (max-width: 480px) {
+    .france-carousel-section {
+        padding: 45px 10px;
+    }
+
+    .france-carousel-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .france-carousel {
+        gap: 3px;
+    }
+
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .france-carousel-window {
+        padding: 8px 4px;
+    }
+
+    .france-photo img {
+        height: 250px;
+    }
+}
+
+
+
+/* =========================================
+   💗 FAREWELL LETTER WITH SIDE POLAROID
+========================================= */
+
+.farewell-letter-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 180px;
+    gap: 22px;
+    align-items: start;
+}
+
+.farewell-letter-content {
+    min-width: 0;
+}
+
+.farewell-letter-content p {
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* Polaroid photo on the right */
+
+.letter-polaroid {
+    width: 100%;
+    max-width: 180px;
+    box-sizing: border-box;
+    padding: 10px 10px 8px;
+    margin: 15px auto;
+    background: #fffdfd;
+    border: 1px solid #f6dce6;
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(150, 80, 110, 0.2);
+    text-align: center;
+    transform: rotate(4deg);
+    transition: transform 0.3s ease;
+}
+
+.letter-polaroid:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+
+.letter-polaroid img {
+    display: block;
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 2px;
+}
+
+.letter-polaroid p {
+    margin: 10px 0 3px;
+    color: #c45d86;
+    font-size: 12px;
+    line-height: 1.5;
+    font-family: inherit;
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+    .farewell-letter-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .letter-polaroid {
+        width: 160px;
+        margin: 15px auto 25px;
+    }
+
+    .letter-polaroid img {
+        height: 160px;
+    }
+}
