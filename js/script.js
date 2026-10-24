@@ -380,7 +380,7 @@ function createPhoto(number) {
             <img
                 src="images/memory${number}.jpeg"
                 alt="France memory ${number}"
-                onerror="tryNextFormat(this, ${number})"
+                onerror="this.onerror=null; this.dataset.formatIndex=0; tryNextFormat(this, ${number})"
             >
 
         </div>
@@ -408,6 +408,7 @@ function createPhoto(number) {
 }
 
 
+
 /* =========================================================
    📸 SUPPORT JPG / JPEG / PNG (UPPERCASE & LOWERCASE)
 ========================================================= */
@@ -425,6 +426,7 @@ function tryNextFormat(img, number) {
     if (index >= extensions.length) {
         img.onerror = null;
         img.style.display = "none";
+        console.error("Photo not found:", number);
         return;
     }
 
@@ -522,62 +524,50 @@ function openPhotoViewer(number) {
 
 
 
+
 /* =========================================================
    🔍 SHOW CURRENT PHOTO
 ========================================================= */
 
 function showViewerPhoto() {
 
-    const image =
-        document.getElementById("viewerImage");
-
-    const caption =
-        document.getElementById("viewerCaption");
-
+    const image = document.getElementById("viewerImage");
+    const caption = document.getElementById("viewerCaption");
 
     if (!image || !caption) return;
 
-
     const extensions = [
-        ".jpeg",
-        ".JPEG",
-        ".png",
-        ".PNG",
-        ".jpg",
-        ".JPG"
+        "jpg", "JPG",
+        "jpeg", "JPEG",
+        "png", "PNG"
     ];
 
     let index = 0;
+    const number = currentPhoto;
 
+    image.onerror = null;
+    image.style.display = "block";
 
     function tryNextFormat() {
 
         if (index >= extensions.length) {
             image.onerror = null;
             image.style.display = "none";
+            console.error("Preview photo not found:", number);
             return;
         }
 
-        image.onerror = function() {
-            tryNextFormat();
-        };
+        const extension = extensions[index++];
 
-        image.src =
-            `images/memory${currentPhoto}${extensions[index]}`;
-
-        index++;
+        image.onerror = tryNextFormat;
+        image.src = `images/memory${number}.${extension}`;
     }
 
-
-    image.style.display = "block";
+    caption.textContent = photoCaptions[number] || "";
 
     tryNextFormat();
-
-
-    caption.textContent =
-        photoCaptions[currentPhoto] || "";
-
 }
+
 
 
 /* =========================================================
