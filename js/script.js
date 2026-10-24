@@ -521,6 +521,7 @@ function openPhotoViewer(number) {
 }
 
 
+
 /* =========================================================
    🔍 SHOW CURRENT PHOTO
 ========================================================= */
@@ -537,28 +538,44 @@ function showViewerPhoto() {
     if (!image || !caption) return;
 
 
-    image.src =
-        `images/memory${currentPhoto}.jpeg`;
+    const extensions = [
+        ".jpeg",
+        ".JPEG",
+        ".png",
+        ".PNG",
+        ".jpg",
+        ".JPG"
+    ];
+
+    let index = 0;
 
 
-    image.onerror = function() {
+    function tryNextFormat() {
 
-        image.src =
-            `images/memory${currentPhoto}.png`;
-
+        if (index >= extensions.length) {
+            image.onerror = null;
+            image.style.display = "none";
+            return;
+        }
 
         image.onerror = function() {
-
-            image.src =
-                `images/memory${currentPhoto}.jpg`;
-
+            tryNextFormat();
         };
 
-    };
+        image.src =
+            `images/memory${currentPhoto}${extensions[index]}`;
+
+        index++;
+    }
+
+
+    image.style.display = "block";
+
+    tryNextFormat();
 
 
     caption.textContent =
-        photoCaptions[currentPhoto];
+        photoCaptions[currentPhoto] || "";
 
 }
 
