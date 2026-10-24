@@ -409,38 +409,34 @@ function createPhoto(number) {
 
 
 /* =========================================================
-   📸 SUPPORT JPEG / PNG / JPG
+   📸 SUPPORT JPG / JPEG / PNG (UPPERCASE & LOWERCASE)
 ========================================================= */
 
 function tryNextFormat(img, number) {
 
-    const currentSrc = img.src.toLowerCase();
+    const extensions = [
+        "jpg", "JPG",
+        "jpeg", "JPEG",
+        "png", "PNG"
+    ];
 
-    if (currentSrc.endsWith(".jpeg")) {
+    let index = Number(img.dataset.formatIndex || 0);
 
-        img.src = `images/memory${number}.png`;
-
-    }
-
-    else if (currentSrc.endsWith(".png")) {
-
-        img.src = `images/memory${number}.jpg`;
-
-    }
-
-    else if (currentSrc.endsWith(".jpg")) {
-
-        img.src = `images/memory${number}.jpeg`;
-
-    }
-
-    else {
-
+    if (index >= extensions.length) {
+        img.onerror = null;
         img.style.display = "none";
-
+        return;
     }
 
+    img.dataset.formatIndex = index + 1;
+
+    img.onerror = function () {
+        tryNextFormat(img, number);
+    };
+
+    img.src = `images/memory${number}.${extensions[index]}`;
 }
+
 
 /* =========================================================
    📸 LOAD MORE PHOTOS
