@@ -344,7 +344,7 @@ const photoCaptions = {
     34: "A memory worth keeping 📸",
     35: "Good people, good memories 🌸",
     36: "Another chapter in our story ♡",
-    37: "The LoveBirds 💗",
+    37: "The Troops 💗",
     38: "One last memory together 🌷 in FRDP 😂",
     39: "Until we meet again 💕",
     40: "See you in the next chapter ♡"
